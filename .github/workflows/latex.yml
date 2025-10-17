@@ -1,1 +1,24 @@
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches: [ "main" ]   # 如果你的默认分支不是 main，就改成 master 等
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:        # 有它，Actions 页会出现“Run workflow”按钮
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_xelatex: true
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: main.pdf
 

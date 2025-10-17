@@ -1,0 +1,1 @@
+$pdf_mode = 1;\n$pdflatex = 'xelatex %O %S';\n$xelatex = 'xelatex %O %S';\n$bibtex_use = 2;\nadd_cus_dep('bib', 'bbl', 0, 'biber %O %B');\n
